@@ -23,4 +23,6 @@ public class User : BaseEntity
     public Role Role { get; set; } = null!;
 
     public ICollection<Address> Addresses { get; set; } = new List<Address>();
+
+    public ICollection<Cart> Carts { get; set; } = new List<Cart>();
 }

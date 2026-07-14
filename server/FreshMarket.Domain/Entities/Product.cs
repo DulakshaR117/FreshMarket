@@ -34,4 +34,6 @@ public class Product : BaseEntity
     public bool IsOrganic { get; set; }
 
     public ICollection<ProductImage> Images { get; set; } = new List<ProductImage>();
+
+    public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 }
