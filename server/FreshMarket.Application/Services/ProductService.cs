@@ -33,24 +33,24 @@ public class ProductService : IProductService
         }).ToList();
     }
 
-    public async Task<ProductResponse?> GetByIdAsync(Guid id)
+   public async Task<ProductResponse> GetByIdAsync(Guid id)
+{
+    var product = await _productRepository.GetByIdAsync(id);
+
+    if (product == null)
+        throw new Exception("Product not found.");
+
+    return new ProductResponse
     {
-        var product = await _productRepository.GetByIdAsync(id);
-
-        if (product == null)
-            return null;
-
-        return new ProductResponse
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Description = product.Description,
-            Price = product.Price,
-            //StockQuantity = product.StockQuantity,
-            CategoryId = product.CategoryId,
-            CategoryName = product.Category.Name
-        };
-    }
+        Id = product.Id,
+        Name = product.Name,
+        Description = product.Description,
+        Price = product.Price,
+        // product.StockQuantity,
+        CategoryId = product.CategoryId,
+        CategoryName = product.Category.Name
+    };
+}
 
     public async Task<ProductResponse> CreateAsync(CreateProductRequest request)
     {
@@ -76,7 +76,7 @@ public class ProductService : IProductService
         await _productRepository.AddAsync(product);
         await _productRepository.SaveChangesAsync();
 
-        return await GetByIdAsync(product.Id)!;
+        return await GetByIdAsync(product.Id);
     }
 
     public async Task<ProductResponse> UpdateAsync(Guid id, UpdateProductRequest request)
@@ -100,7 +100,7 @@ public class ProductService : IProductService
         _productRepository.Update(product);
         await _productRepository.SaveChangesAsync();
 
-        return await GetByIdAsync(product.Id)!;
+        return await GetByIdAsync(product.Id);
     }
 
     public async Task DeleteAsync(Guid id)
