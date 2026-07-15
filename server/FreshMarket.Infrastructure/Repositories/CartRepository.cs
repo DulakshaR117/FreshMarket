@@ -60,6 +60,11 @@ public class CartRepository : ICartRepository
         _context.CartItems.Remove(cartItem);
     }
 
+    public void DeleteCartItems(IEnumerable<CartItem> cartItems)
+{
+    _context.CartItems.RemoveRange(cartItems);
+}
+
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();

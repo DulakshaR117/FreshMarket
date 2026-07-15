@@ -18,6 +18,8 @@ public interface ICartRepository
 
     void DeleteCartItem(CartItem cartItem);
 
+    void DeleteCartItems(IEnumerable<CartItem> cartItems);
+
     Task SaveChangesAsync();
 
     Task UpdateCartItemAsync(CartItem cartItem);
