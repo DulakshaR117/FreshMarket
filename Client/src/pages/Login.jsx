@@ -1,3 +1,9 @@
-export default function Login() {
-  return <h1>Login</h1>;
+function Login() {
+  return (
+    <div className="max-w-7xl mx-auto py-10">
+      <h1 className="text-4xl font-bold">🔐 Login</h1>
+    </div>
+  );
 }
+
+export default Login;

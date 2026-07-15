@@ -1,3 +1,9 @@
-export default function Checkout() {
-  return <h1>Checkout</h1>;
+function Checkout() {
+  return (
+    <div className="max-w-7xl mx-auto py-10">
+      <h1 className="text-4xl font-bold">💳 Checkout</h1>
+    </div>
+  );
 }
+
+export default Checkout;

@@ -1,3 +1,9 @@
-export default function Register() {
-  return <h1>Register</h1>;
+function Register() {
+  return (
+    <div className="max-w-7xl mx-auto py-10">
+      <h1 className="text-4xl font-bold">📝 Register</h1>
+    </div>
+  );
 }
+
+export default Register;
