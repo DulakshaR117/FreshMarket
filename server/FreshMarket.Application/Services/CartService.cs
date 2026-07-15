@@ -9,13 +9,17 @@ public class CartService : ICartService
     private readonly ICartRepository _cartRepository;
     private readonly IProductRepository _productRepository;
 
-    public CartService(
-        ICartRepository cartRepository,
-        IProductRepository productRepository)
-    {
-        _cartRepository = cartRepository;
-        _productRepository = productRepository;
-    }
+    private readonly IUserRepository _userRepository;
+
+  public CartService(
+    ICartRepository cartRepository,
+    IProductRepository productRepository,
+    IUserRepository userRepository)
+{
+    _cartRepository = cartRepository;
+    _productRepository = productRepository;
+    _userRepository = userRepository;
+}
 
    public async Task<CartResponse> GetCartAsync(Guid userId)
 {
